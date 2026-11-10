@@ -1,0 +1,3725 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="38.03" TargetName="L11_KnifeCarriageCtrl" TargetType="Routine" TargetSubType="RLL" ContainsContext="true" Owner="Windows User" ExportDate="Tue Nov 10 12:03:23 2026" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="LATHE">
+<DataTypes Use="Context">
+<DataType Name="CarriageDrive" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[KNIFE CARRIAGE FEEDBACK/TARGET
+ WORD]]>
+</Description>
+<Members>
+<Member Name="Status" DataType="CarriageDrive_Status" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="CurrentPosition" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SpindleSpeed" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Command" DataType="CarriageDrive_Command" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="PositionTarget" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Thickness" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="JumpBackTime" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Recompress" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="CoreRadius" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="CarriageDrive_Status"/>
+<Dependency Type="DataType" Name="CarriageDrive_Command"/>
+</Dependencies>
+</DataType>
+<DataType Name="CarriageDrive_Command" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[KNIFE CARRIAGE COMMAND WORD]]>
+</Description>
+<Members>
+<Member Name="ZZZZZZZZZZCarriageDr0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Run" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="HomeRequest" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Positioning" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="SpeedBit0" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="SpeedBit1" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="SpeedBit2" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="Gearing" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="6" ExternalAccess="Read/Write"/>
+<Member Name="Spare7" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="7" ExternalAccess="Read/Write"/>
+<Member Name="ZZZZZZZZZZCarriageDr9" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="JogFwd" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="JogRev" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="SheetBreak" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="ClearCommands" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="Spare12" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="ResetDrive" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="Spare14" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="6" ExternalAccess="Read/Write"/>
+<Member Name="Spare15" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="7" ExternalAccess="Read/Write"/>
+<Member Name="RESERVED" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="CarriageDrive_Status" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[KNIFE CARRIAGE STATUS WORD]]>
+</Description>
+<Members>
+<Member Name="ZZZZZZZZZZCarriageDr0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="DriveHealthy" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="DriveAt0Speed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="DriveRunning" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="MotorCurrentOverload" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="HomeRefOK" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="DigitalLockOn" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="AtPosition" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="6" ExternalAccess="Read/Write"/>
+<Member Name="AtSoftLimits" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr0" BitNumber="7" ExternalAccess="Read/Write"/>
+<Member Name="ZZZZZZZZZZCarriageDr9" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="InCoreLimit" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Spare9" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Spare10" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="Spare11" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="Spare12" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="Spare13" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCarriageDr9" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="RESERVED_INT" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+</DataTypes>
+<Modules Use="Context">
+<Module Use="Reference" Name="Charger">
+</Module>
+</Modules>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Name="_Toggle" Revision="1.0" Vendor="RujaPa" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="true" CreatedDate="2010-04-07T09:35:37.424Z" CreatedBy="WINXP32GSP3\rwAdmin" EditedDate="2011-04-08T02:30:52.093Z" EditedBy="XP-IN95-AB-2\rwAdmin" SoftwareRevision="v17.00"
+>
+<Description>
+<![CDATA[Toggles output on rising edge of input]]>
+</Description>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="IN_ResetOutput" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="OUT_Toggle" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="OUT_OnPulse" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="IN_SetOutput" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="_toggleHelp" DataType="BOOL" Radix="Decimal" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="_ons" DataType="BOOL" Radix="Decimal" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="_toggleHelpOut" DataType="BOOL" Radix="Decimal" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="_ons2" DataType="BOOL" Radix="Decimal" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="EnableInFalse" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[Toggles output on rising edge of input]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(EnableIn) ONS(_ons) [OTL(_toggleHelpOut) ,XIC(_toggleHelp) OTU(_toggleHelpOut) ] ,XIC(_toggleHelpOut) OTE(_toggleHelp) ];]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[XIC(IN_SetOutput)OTL(_toggleHelpOut);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[XIC(IN_ResetOutput)OTU(_toggleHelpOut);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[XIC(_toggleHelpOut)OTE(EnableOut);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[XIC(_toggleHelpOut)[OTE(OUT_Toggle) ,ONS(_ons2) OTE(OUT_OnPulse) ];]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[Toggles output on rising edge of input]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(EnableIn) ONS(_ons) [OTL(_toggleHelpOut) ,XIC(_toggleHelp) OTU(_toggleHelpOut) ] ,XIC(_toggleHelpOut) OTE(_toggleHelp) ];]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[XIC(IN_SetOutput)OTL(_toggleHelpOut);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[XIC(IN_ResetOutput)OTU(_toggleHelpOut);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[XIC(_toggleHelpOut)OTE(EnableOut);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[XIC(_toggleHelpOut)[OTE(OUT_Toggle) ,ONS(_ons2) OTE(OUT_OnPulse) ];]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+<Tags Use="Context">
+<Tag Name="_KC_RetractPos_TGT_Window" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1963]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="1963"/>
+</Data>
+</Tag>
+<Tag Name="Always_0" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="AnyError_KnifeCarriageControl" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Knife Carriage 
+Alarm Present]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="AnyError_SpindlesControl" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Auto_High_Speed_Roundup" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Auto_Peeling_Has_Been_On" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Auto_Roundup_Has_Been_On" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Auto_Roundup_Step_Has_Been_On" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="BottomRoll_CommandEnable" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="BottomRoll_Spinout" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="CarriageDrive" TagType="Base" DataType="CarriageDrive" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[[87,0,0],2013,49,[33,0,0],2013,2590,0,0,443]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="CarriageDrive">
+<StructureMember Name="Status" DataType="CarriageDrive_Status">
+<DataValueMember Name="DriveHealthy" DataType="BOOL" Value="1"/>
+<DataValueMember Name="DriveAt0Speed" DataType="BOOL" Value="1"/>
+<DataValueMember Name="DriveRunning" DataType="BOOL" Value="1"/>
+<DataValueMember Name="MotorCurrentOverload" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HomeRefOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="DigitalLockOn" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AtPosition" DataType="BOOL" Value="1"/>
+<DataValueMember Name="AtSoftLimits" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InCoreLimit" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Spare9" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Spare10" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Spare11" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Spare12" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Spare13" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RESERVED_INT" DataType="INT" Radix="Decimal" Value="0"/>
+</StructureMember>
+<DataValueMember Name="CurrentPosition" DataType="DINT" Radix="Decimal" Value="2013"/>
+<DataValueMember Name="SpindleSpeed" DataType="DINT" Radix="Decimal" Value="49"/>
+<StructureMember Name="Command" DataType="CarriageDrive_Command">
+<DataValueMember Name="Run" DataType="BOOL" Value="1"/>
+<DataValueMember Name="HomeRequest" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Positioning" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SpeedBit0" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SpeedBit1" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SpeedBit2" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Gearing" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Spare7" DataType="BOOL" Value="0"/>
+<DataValueMember Name="JogFwd" DataType="BOOL" Value="0"/>
+<DataValueMember Name="JogRev" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SheetBreak" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ClearCommands" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Spare12" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ResetDrive" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Spare14" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Spare15" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RESERVED" DataType="INT" Radix="Decimal" Value="0"/>
+</StructureMember>
+<DataValueMember Name="PositionTarget" DataType="DINT" Radix="Decimal" Value="2013"/>
+<DataValueMember Name="Thickness" DataType="DINT" Radix="Decimal" Value="2590"/>
+<DataValueMember Name="JumpBackTime" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Recompress" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CoreRadius" DataType="DINT" Radix="Decimal" Value="443"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="Catch_Up_Tray_Lower_FrontEndPassed" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Catch_Up_Tray_Lower_StandBy" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Catch_Up_Tray_Upper_FrontEndPassed" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Catch_Up_Tray_Upper_StandBy" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="CatchUpConvLower_RunningFW" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="CatchUpConvUpper_RunningFW" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Clipper_ControlEnable" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Data_ReturnRad" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[2023]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="2023"/>
+</Data>
+</Tag>
+<Tag Name="Data_RoundupRadFromXY" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[For small-small logs because heavy peel offset also changes which effects the roundup]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1540]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="1540"/>
+</Data>
+</Tag>
+<Tag Name="Error_KnifeCarriageControl" TagType="Base" DataType="INT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Comments>
+<Comment Operand=".0">
+<![CDATA[233M1 Knife carriage feed drive cooling fan]]>
+</Comment>
+<Comment Operand=".1">
+<![CDATA[Knife carriage position difference]]>
+</Comment>
+<Comment Operand=".2">
+<![CDATA[Knife carriage feed drive initialization failed]]>
+</Comment>
+<Comment Operand=".3">
+<![CDATA[232M1 Knife carriage drive not ready]]>
+</Comment>
+<Comment Operand=".4">
+<![CDATA[Knife carriage drive fault]]>
+</Comment>
+<Comment Operand=".5">
+<![CDATA[Rotating nose bar not running]]>
+</Comment>
+<Comment Operand=".6">
+<![CDATA[Top roll not running]]>
+</Comment>
+<Comment Operand=".7">
+<![CDATA[Knife carriage position check failure]]>
+</Comment>
+<Comment Operand=".8">
+<![CDATA[Knife carriage position data read error]]>
+</Comment>
+<Comment Operand=".9">
+<![CDATA[Knife carriage drive data read error]]>
+</Comment>
+<Comment Operand=".10">
+<![CDATA[Knife carriage drive controller failure]]>
+</Comment>
+<Comment Operand=".11">
+<![CDATA[Drive Knife carriage to the greasing position]]>
+</Comment>
+<Comment Operand=".13">
+<![CDATA[Thickness change failed]]>
+</Comment>
+</Comments>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Error_LatheMasterSeq" TagType="Base" DataType="INT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Comments>
+<Comment Operand=".1">
+<![CDATA[Knife not fixed
+KNIFE NOT CLAMPED ALARM]]>
+</Comment>
+<Comment Operand=".2">
+<![CDATA[201LCC PLC back-up battery exhausted]]>
+</Comment>
+</Comments>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="ErrorReset_Lathe" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[ALARM RESET FROM PUSHBUTTON OR HMI]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="FROM_ChargerSwing_AT_Lathe" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Charger Swing 
+at Lathe
+(Full Front Position)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="HMI_Lathe_Core_Radius" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[x.x mm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[443]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="443"/>
+</Data>
+</Tag>
+<Tag Name="HMI_Lathe_Core_Radius_LimVolRad1" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[160]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="160"/>
+</Data>
+</Tag>
+<Tag Name="HMI_Lathe_Core_Radius_SetVal1" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[45]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="45"/>
+</Data>
+</Tag>
+<Tag Name="HMI_Lathe_Core_Radius_SetVal2" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[66]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="66"/>
+</Data>
+</Tag>
+<Tag Name="HMI_Lathe_DualCoreSize_Enabled" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="HMI_Lathe_DualCoreSize_Toggle" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="HMI_Lathe_HeavyPeel_Offset" TagType="Base" DataType="INT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[0.01 mm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[250]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="250"/>
+</Data>
+</Tag>
+<Tag Name="HMI_Lathe_HeavyPeel_Wrap" TagType="Base" DataType="INT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[pcs 0.1]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[10]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="10"/>
+</Data>
+</Tag>
+<Tag Name="HMI_Lathe_Man_Return_Rad" TagType="Base" DataType="INT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[1 mm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[170]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="170"/>
+</Data>
+</Tag>
+<Tag Name="HMI_Lathe_Peel_Thickness1" TagType="Base" DataType="INT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[PEELING THICKNESS
+0.01 mm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[259]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="259"/>
+</Data>
+</Tag>
+<Tag Name="HMI_Lathe_RUpEarlyStart_Enabled" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="I_JS_RightStep_1" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[I201_203C_1.1
+Joystick right step #1]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="I_M_BottomRollRotHydrRun" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[I201_200M_4.1
+Bottom roll rotation hydraulic pump run 226K1]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="I_M_TopRollRotHydrRun" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[I201_200M_4.0
+Top roll rotation hydraulic pump run 225K1]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="I_PB_ButtonsEna_204C" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[I201_204C_4.1
+Buttons enable button]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="I_PB_KnifeCarrBW_204C" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[I201_204C_5.1
+Knife carriage backward button]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="I_PB_KnifeCarrFW_204C" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[I201_204C_5.0
+Knife carriage forward button]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="I_Pilz_1_LS_StairwaySafeDoorLHS_Clsd" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[I201_201L_CPU1_FETH_I.9]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="I_Pilz_1_LS_StairwaySafeDoorRHS_Clsd" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[I201_201L_CPU1_FETH_I.11]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="I_Pilz_2_LS_TrashGateLock_OFF" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[I201_201L_CPU2_FETH_I.6]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="I_PR_KnifeCarrPos_LHS1" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[I201_221J_9.2
+Knife carriage position check left #1]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="I_PR_KnifeCarrPos_RHS1" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[I201_222J_3.0
+Knife carriage position check right #1]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="IO_XY_To_Lathe_DATA3" TagType="Consumed" DataType="DINT" Radix="Decimal" ExternalAccess="Read/Write" OpcUaAccess="None">
+<ConsumeInfo Producer="Charger" RemoteTag="IO_XY_To_Lathe_DATA3" RemoteInstance="0" RPI="10" Unicast="false"/>
+<Description>
+<![CDATA[Knife Carriage Retract Radius]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1923]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="1923"/>
+</Data>
+</Tag>
+<Tag Name="KC_Abs_Pos_10_mm" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Knife carriage absolute position
+0,1 mm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[2013]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="2013"/>
+</Data>
+</Tag>
+<Tag Name="KC_ActSpeed_10" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[0,1]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_ClearFORBlk" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Knife carriage is clear for next block]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="KC_Control_Enable" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[KNIFE CARRIAGE CONTROL ENABLE]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="KC_CoreRadius_mm" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[0,1 mm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[443]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="443"/>
+</Data>
+</Tag>
+<Tag Name="KC_CoreRadiusReached" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_DataRead_OK" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Knife carriage delta axis ok status bits from Delta]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="KC_DrivingError" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_Extra_Retract_Adder" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1.00000000e+001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="10.0"/>
+</Data>
+</Tag>
+<Tag Name="KC_Extra_Retract_Threshold" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1913]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="1913"/>
+</Data>
+</Tag>
+<Tag Name="KC_ExtraRetract" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_FastForwardRad_mm" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[0,1 mm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[825]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="825"/>
+</Data>
+</Tag>
+<Tag Name="KC_FeedStopped" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_KnifeCarrRetracted" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Knife carriage retracted]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="KC_ManualBackward_Fast" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_ManualBackward_Slow" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_ManualForward_Fast" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_ManualForward_Slow" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_ManualRun" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_MovedBackward" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Knife carriage is moving backward]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_PeelingBeenOn" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Peeling cycle has been started]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_PeelingEnable" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="KC_PeelingEnableFromRollerBar" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="KC_Retract_Variables" TagType="Base" DataType="REAL" Dimensions="10" Radix="Float" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[5.00000000e-001,4.00000000e-001,3.00000000e-001,3.00000000e-001,4.00000000e-001,0.00000000e+000
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000]]]>
+</Data>
+<Data Format="Decorated">
+<Array DataType="REAL" Dimensions="10" Radix="Float">
+<Element Index="[0]" Value="0.5"/>
+<Element Index="[1]" Value="0.4"/>
+<Element Index="[2]" Value="0.3"/>
+<Element Index="[3]" Value="0.3"/>
+<Element Index="[4]" Value="0.4"/>
+<Element Index="[5]" Value="0.0"/>
+<Element Index="[6]" Value="0.0"/>
+<Element Index="[7]" Value="0.0"/>
+<Element Index="[8]" Value="0.0"/>
+<Element Index="[9]" Value="0.0"/>
+</Array>
+</Data>
+</Tag>
+<Tag Name="KC_Retracted" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Knife carriage retracted]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="KC_Retracting" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Knife carriage is retracting
+(step 6)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_StepNumber" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[KNIFE CARRIAGE CURRENT STEP]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_Steps" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Comments>
+<Comment Operand=".1">
+<![CDATA[KNIFE CARRIAGE 
+READY FOR BLOCK]]>
+</Comment>
+<Comment Operand=".2">
+<![CDATA[KNIFE CARRIAGE 
+ROUND UP MODE]]>
+</Comment>
+<Comment Operand=".3">
+<![CDATA[KNIFE CARRIAGE 
+ROUNDUP PEEL MODE]]>
+</Comment>
+<Comment Operand=".4">
+<![CDATA[KNIFE CARRIAGE 
+PEELING MODE]]>
+</Comment>
+<Comment Operand=".5">
+<![CDATA[KNIFE CARRIAGE 
+AT CORE LIMIT]]>
+</Comment>
+<Comment Operand=".6">
+<![CDATA[KNIFE CARRIAGE 
+IN CORE DROP/ RETRACT MODE]]>
+</Comment>
+</Comments>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_StopDrive" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KC_SynchronRun" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KCStopped_CloseTrashGate" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KCWaitingCatchUpConveyorsForPeeling" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KCWaitingSpindleRotationForPeeling" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="KnifeCarr_Home_Pos_Init_Ready" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Knife Carriage Drive Homed,Intialized & Ready to run]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Lathe_Automatic_Mode" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[LATHE AUTO]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Lathe_Spindle_Drive_Running" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[LATHE
+SPINDLE
+DRIVE
+RUNNING]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Lathe_Step_4" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[LATHE
+STEP 4
+CLOSE OUTER 
+SPINDLES]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Lathe_Step_6" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[LATHE
+STEP 6 
+ROUNDUP]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Lathe_Step_7" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[LATHE
+STEP 7
+HIGHSPEED
+ROUNDUP]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Lathe_Step_8" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[LATHE
+STEP 8
+PEELING]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Lathe_Tipple_And_Trays_Ready" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[LATHE
+TIPPLE
+& CU TRAY
+READY]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Lathe_Tipple_To_Lower_Tray" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Lathe_Tipple_To_Upper_Tray" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[LATHE
+TIPPLE TO
+TRAY 3
+COMMAND]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Limits_FastForwardRad" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Limits_MiddleChucksRetracted_Fail" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Limits_OuterChucksRetracted_Fail" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Limits_VeryHighSpeedRoundup" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="MIS_Lathe_Program" TagType="Base" DataType="DINT" Dimensions="14" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[updateCounter]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[Species]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[veneerthickness]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[SpeciesType]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[GrossLength1]]>
+</Comment>
+<Comment Operand="[5]">
+<![CDATA[NetLength11]]>
+</Comment>
+<Comment Operand="[6]">
+<![CDATA[NetLength12]]>
+</Comment>
+<Comment Operand="[7]">
+<![CDATA[InvoiceLength1]]>
+</Comment>
+<Comment Operand="[8]">
+<![CDATA[GrossLength2]]>
+</Comment>
+<Comment Operand="[9]">
+<![CDATA[NetLength21]]>
+</Comment>
+<Comment Operand="[10]">
+<![CDATA[NetLength22]]>
+</Comment>
+<Comment Operand="[11]">
+<![CDATA[InvoiceLength2]]>
+</Comment>
+<Comment Operand="[12]">
+<![CDATA[Spare1]]>
+</Comment>
+<Comment Operand="[13]">
+<![CDATA[Spare2]]>
+</Comment>
+</Comments>
+<Data Format="L5K">
+<![CDATA[[479877410,1,254,1,2610,2570,2570,800,1340,1310,1310,800,0,0]]]>
+</Data>
+<Data Format="Decorated">
+<Array DataType="DINT" Dimensions="14" Radix="Decimal">
+<Element Index="[0]" Value="479877410"/>
+<Element Index="[1]" Value="1"/>
+<Element Index="[2]" Value="254"/>
+<Element Index="[3]" Value="1"/>
+<Element Index="[4]" Value="2610"/>
+<Element Index="[5]" Value="2570"/>
+<Element Index="[6]" Value="2570"/>
+<Element Index="[7]" Value="800"/>
+<Element Index="[8]" Value="1340"/>
+<Element Index="[9]" Value="1310"/>
+<Element Index="[10]" Value="1310"/>
+<Element Index="[11]" Value="800"/>
+<Element Index="[12]" Value="0"/>
+<Element Index="[13]" Value="0"/>
+</Array>
+</Data>
+</Tag>
+<Tag Name="MIS_LatheRecipe_IOi3" TagType="Alias" Radix="Decimal" AliasFor="MIS_Lathe_Program[2]" ExternalAccess="Read/Write" OpcUaAccess="None" DataExchangeId="{50D2E5D0-0B20-44C4-B6D4-C4EB7B3C218E}"/>
+<Tag Name="mm_CurrFeedThick" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Current feeding thickness
+0,001 mm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[2590]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="2590"/>
+</Data>
+</Tag>
+<Tag Name="mm_MinimCoreRadius" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Minimum core radius x.x mm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[400]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="400"/>
+</Data>
+</Tag>
+<Tag Name="MotorStart_Service" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Service mode ON]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="MsgChargerTOLatheTbl" TagType="Base" DataType="DINT" Dimensions="8" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Comments>
+<Comment Operand="[0]">
+<![CDATA[From Charger: Block Length]]>
+</Comment>
+<Comment Operand="[1]">
+<![CDATA[From Charger: Butt End]]>
+</Comment>
+<Comment Operand="[2]">
+<![CDATA[From Charger: Conicalness]]>
+</Comment>
+<Comment Operand="[3]">
+<![CDATA[From Charger: Netto Radius]]>
+</Comment>
+<Comment Operand="[4]">
+<![CDATA[From Charger: Volume Radius]]>
+</Comment>
+</Comments>
+<Data Format="L5K">
+<![CDATA[[2545,0,10,151,164,152,150,14721353]]]>
+</Data>
+<Data Format="Decorated">
+<Array DataType="DINT" Dimensions="8" Radix="Decimal">
+<Element Index="[0]" Value="2545"/>
+<Element Index="[1]" Value="0"/>
+<Element Index="[2]" Value="10"/>
+<Element Index="[3]" Value="151"/>
+<Element Index="[4]" Value="164"/>
+<Element Index="[5]" Value="152"/>
+<Element Index="[6]" Value="150"/>
+<Element Index="[7]" Value="14721353"/>
+</Array>
+</Data>
+</Tag>
+<Tag Name="ONS" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1107821298]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="1107821298"/>
+</Data>
+</Tag>
+<Tag Name="ONS_Knife_Carriage0" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[ONE SHOT]]>
+</Description>
+<Comments>
+<Comment Operand=".0">
+<![CDATA[ONE SHOT]]>
+</Comment>
+<Comment Operand=".1">
+<![CDATA[ons]]>
+</Comment>
+<Comment Operand=".2">
+<![CDATA[ONE SHOT]]>
+</Comment>
+<Comment Operand=".3">
+<![CDATA[ons]]>
+</Comment>
+</Comments>
+<Data Format="L5K">
+<![CDATA[12320]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="12320"/>
+</Data>
+</Tag>
+<Tag Name="OUT_JS_KnifeCarrBackward" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="OUT_JS_KnifeCarrForward" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="OUT_JS_Peeling" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="OUT_JS_Roundup" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="OUT_JS_RoundupPeel" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="OUT_JS_StopKnifeCarrFeed" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="OUT_JS_StopPeelOpnChucks" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="PitchAngle_Control_Enable" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Pitch angle control enable]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="PRUCounters" TagType="Base" DataType="DINT" Dimensions="10" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[898505,0,0,0,0,0,0,0,0,10536]]]>
+</Data>
+<Data Format="Decorated">
+<Array DataType="DINT" Dimensions="10" Radix="Decimal">
+<Element Index="[0]" Value="898505"/>
+<Element Index="[1]" Value="0"/>
+<Element Index="[2]" Value="0"/>
+<Element Index="[3]" Value="0"/>
+<Element Index="[4]" Value="0"/>
+<Element Index="[5]" Value="0"/>
+<Element Index="[6]" Value="0"/>
+<Element Index="[7]" Value="0"/>
+<Element Index="[8]" Value="0"/>
+<Element Index="[9]" Value="10536"/>
+</Array>
+</Data>
+</Tag>
+<Tag Name="Q_PL_PeelingOn" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Q201_203C_9.0
+Peeling is on]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Q_V_SpurKnifeCleaning" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Q201_221J_22.2
+Spur knife cleaning]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="RibbonBreakTrashgateBlow" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Roller_Bar_Control_Enable" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Roller bar control enable]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="RollerBar_IsClosed" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="RollerBarRot_RotStopped_LHS" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Roller bar rotation stopped LHS]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="RollerBarRot_RotStopped_RHS" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Roller bar rotation stopped RHS]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="rpm_ActSpindleSpeed10" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Actual spindle speed x.x rpm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Spdls_InnerChucksRETRD" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[LATHE LHS & RHS
+INNER CHUCKS RETRACTED]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Spdls_MiddleChucksRETRD" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Middle Chucks Retracted Feedback from Proxes]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Spdls_OuterChucksRETRD" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[OUTER SPINDLES RETRACTED FROM PROXY SWITCHES]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Spindles_6ftBlock" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Spindles_ClosedChucksRad" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Biggest closed chucks radius
+0,1 mm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[375]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="375"/>
+</Data>
+</Tag>
+<Tag Name="Spindles_InnerChucksRad_mm" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Inner chucks radius 0,1 mm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[375]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="375"/>
+</Data>
+</Tag>
+<Tag Name="Spindles_OperationEnable" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Spindle Operational Mode]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Spindles_Rotation_ON" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Spindles rotation is on]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Spindles_Spinout" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[SPINOUT DETECTED -OVERPENETRATION]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="SupHMI_RibbonBreakPauseTime" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[500]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="500"/>
+</Data>
+</Tag>
+<Tag Name="Test_Bit_Pasi" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Test_Bits" TagType="Base" DataType="DINT" Dimensions="10" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[11,0,0,0,0,0,0,0,0,0]]]>
+</Data>
+<Data Format="Decorated">
+<Array DataType="DINT" Dimensions="10" Radix="Decimal">
+<Element Index="[0]" Value="11"/>
+<Element Index="[1]" Value="0"/>
+<Element Index="[2]" Value="0"/>
+<Element Index="[3]" Value="0"/>
+<Element Index="[4]" Value="0"/>
+<Element Index="[5]" Value="0"/>
+<Element Index="[6]" Value="0"/>
+<Element Index="[7]" Value="0"/>
+<Element Index="[8]" Value="0"/>
+<Element Index="[9]" Value="0"/>
+</Array>
+</Data>
+</Tag>
+<Tag Name="test_Second_Load_Pos" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Tipple_IsDOWN" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Tipple_IsUP" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="TopRoll_CommandEnable" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="TopRoll_Spinout" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="trash_gate_disable" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Trashgate Diabled for Sheet Break mode]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Trashgate_Has_Been_Closed" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[TRASHGATE CLOSED DURING SHEET BREAK]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Trashgate_IsOpened" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Trays_Ready_For_Peeling" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="VeneerRibbonLengthEstimate" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[2.61355686e+001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="26.135569"/>
+</Data>
+</Tag>
+</Tags>
+<Programs Use="Context">
+<Program Use="Context" Name="P_KnifeCarriageControl">
+<Tags Use="Context">
+<Tag Name="_CoreRadiusTemp" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[66]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="66"/>
+</Data>
+</Tag>
+<Tag Name="_KC_AbsPos10mm_Old" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[2014]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="2014"/>
+</Data>
+</Tag>
+<Tag Name="_KC_DiffCurrCycle_1" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="_KC_DiffCurrCycle_2" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="_KC_DiffCurrCycle_3" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="_KC_DiffSensorPosit" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="_KC_DriveGreasingPos" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Knife Carriage requires grease 
+(30000 cycles completed)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="_KC_DriveStopped" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="_KC_HeavyPeel_CMD" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="_KC_HeavyPeel_ENA" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="_KC_HeavyPeel_EndPOS" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1519]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="1519"/>
+</Data>
+</Tag>
+<Tag Name="_KC_HeavyPeel_FullWraps" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="_KC_HeavyPeel_Offset" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[250]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="250"/>
+</Data>
+</Tag>
+<Tag Name="_KC_HeavyPeel_StartPOS" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1544]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="1544"/>
+</Data>
+</Tag>
+<Tag Name="_KC_HeavyPeel_TGT" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1494]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="1494"/>
+</Data>
+</Tag>
+<Tag Name="_KC_HeavyPeel_Thickness" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[509]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="509"/>
+</Data>
+</Tag>
+<Tag Name="_KC_HeavyPeel_WrapOffset" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[250]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="250"/>
+</Data>
+</Tag>
+<Tag Name="_KC_HeavyPeelCalcs_DONE" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="_KC_KnifeCarrTarget" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[0,1 mm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[2013]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="2013"/>
+</Data>
+</Tag>
+<Tag Name="_KC_ManualRunningStopped" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="_KC_PositionRun" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="_KC_PosSensorDifference" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[-1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="-1"/>
+</Data>
+</Tag>
+<Tag Name="_KC_RetractCloseTOClear" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[KNIFE CARRIAGE RETRACT CLEAR TO ALLOW NEW BLOCK TO LOAD IN TO LATHE (VARIABLE BASED ON BLOCK SIZE)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[507]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="507"/>
+</Data>
+</Tag>
+<Tag Name="_KC_RetractCounter" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[14612]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="14612"/>
+</Data>
+</Tag>
+<Tag Name="_KC_Retracted_temp" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="_KC_RetractPos_mm" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Description>
+<![CDATA[Z]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1690]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="1690"/>
+</Data>
+</Tag>
+<Tag Name="_KC_RetractTemp" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="_KC_SynchronRunning" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="_KC_SynchronRunStopped" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="_ONS_1" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[52]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="52"/>
+</Data>
+</Tag>
+<Tag Name="_ONS_KC" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[268435459]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="268435459"/>
+</Data>
+</Tag>
+<Tag Name="_Position_CheckLHS_Max" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[973]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="973"/>
+</Data>
+</Tag>
+<Tag Name="_Position_CheckLHS_Min" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[571]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="571"/>
+</Data>
+</Tag>
+<Tag Name="_Position_CheckRHS_Max" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[952]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="952"/>
+</Data>
+</Tag>
+<Tag Name="_Position_CheckRHS_Min" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[571]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="571"/>
+</Data>
+</Tag>
+<Tag Name="_PositionCheck_ValuesLHS" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[972]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="972"/>
+</Data>
+</Tag>
+<Tag Name="_PositionCheck_ValuesRHS" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[933]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="933"/>
+</Data>
+</Tag>
+<Tag Name="_PositionCheckFailure" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="_PositionCheckFailure_Counter" TagType="Base" DataType="COUNTER" Dimensions="10" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[[0,2000,147],[0,2000,15],[0,2000,181],[0,2000,8],[0,2000,33],[0,2000,13],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]]]>
+</Data>
+<Data Format="Decorated">
+<Array DataType="COUNTER" Dimensions="10">
+<Element Index="[0]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="147"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[1]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="15"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[2]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="181"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[3]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="8"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[4]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="33"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[5]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="13"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[6]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[7]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[8]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[9]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+</Array>
+</Data>
+</Tag>
+<Tag Name="_PositionCheckFailure_Values" TagType="Base" DataType="DINT" Dimensions="10" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[737,941,737,966,907,737,939,962,0,0]]]>
+</Data>
+<Data Format="Decorated">
+<Array DataType="DINT" Dimensions="10" Radix="Decimal">
+<Element Index="[0]" Value="737"/>
+<Element Index="[1]" Value="941"/>
+<Element Index="[2]" Value="737"/>
+<Element Index="[3]" Value="966"/>
+<Element Index="[4]" Value="907"/>
+<Element Index="[5]" Value="737"/>
+<Element Index="[6]" Value="939"/>
+<Element Index="[7]" Value="962"/>
+<Element Index="[8]" Value="0"/>
+<Element Index="[9]" Value="0"/>
+</Array>
+</Data>
+</Tag>
+<Tag Name="_T_EnableFromRollerBar" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[1623475,300,300]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="300"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="300"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="_T_KC_Retracting_delay" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[1620926,60,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="60"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="_T_ManualRunningStopped" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[-1608989264,300,300]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="300"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="300"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="1"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="1"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="_T_PositionRunning_ON" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[1620926,200,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="200"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="_T_SpurKnifeClean" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[0,500,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="500"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="_T_SynchronRunning_ON" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[-1608989268,300,300]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="300"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="300"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="1"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="1"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="_TrashGateCloseDelay" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[-1072118356,500,42]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="500"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="42"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="1"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="1"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="_TwoCoreSizeToggle" TagType="Base" DataType="_Toggle" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="_Toggle">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="0"/>
+<DataValueMember Name="IN_ResetOutput" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OUT_Toggle" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OUT_OnPulse" DataType="BOOL" Value="0"/>
+<DataValueMember Name="IN_SetOutput" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="Diagnostic" TagType="Base" DataType="COUNTER" Dimensions="50" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[[0,9999,9087],[0,9999,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0
+		],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]]]>
+</Data>
+<Data Format="Decorated">
+<Array DataType="COUNTER" Dimensions="50">
+<Element Index="[0]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="9999"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="9087"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[1]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="9999"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[2]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[3]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[4]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[5]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[6]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[7]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[8]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[9]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[10]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[11]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[12]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[13]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[14]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[15]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[16]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[17]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[18]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[19]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[20]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[21]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[22]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[23]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[24]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[25]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[26]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[27]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[28]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[29]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[30]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[31]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[32]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[33]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[34]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[35]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[36]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[37]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[38]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[39]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[40]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[41]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[42]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[43]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[44]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[45]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[46]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[47]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[48]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[49]">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Element>
+</Array>
+</Data>
+</Tag>
+<Tag Name="Error_KnifeCarriageControl7_Counter" TagType="Base" DataType="COUNTER" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[[536870912,2000,3634]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="3634"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="1"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="KC_CoreRadiusAdder_mm" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[2]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="2"/>
+</Data>
+</Tag>
+<Tag Name="KC_CoreRadiusMod_mm" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[445]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="445"/>
+</Data>
+</Tag>
+<Tag Name="Medium_Or_Large_Block_In_Lathe" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Small_Block_In_Lathe" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Test_Fast_KC_Retract" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="Very_Small_Block_In_Lathe" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write" OpcUaAccess="None">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+</Tags>
+<Routines Use="Context">
+<Routine Use="Target" Name="L11_KnifeCarriageCtrl" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[CONTROL ENABLE]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_DataRead_OK)XIC(KnifeCarr_Home_Pos_Init_Ready)[XIO(AnyError_KnifeCarriageControl) ,XIC(_KC_DriveGreasingPos) ]OTE(KC_Control_Enable);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[LIMITS]]>
+</Comment>
+<Text>
+<![CDATA[[LE(KC_Abs_Pos_10_mm,1120) ,[XIC(KC_ManualForward_Fast) ,XIC(KC_ManualForward_Slow) ] LE(KC_Abs_Pos_10_mm,1375) ]XIO(Spdls_OuterChucksRETRD)OTE(Limits_OuterChucksRetracted_Fail);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[XIC(trash_gate_disable)[[XIC(KC_Steps.2) ,XIC(KC_Steps.3) ,XIC(KC_Steps.4) ] XIC(I_JS_RightStep_1) XIC(Trashgate_Has_Been_Closed) OTL(KC_FeedStopped) ,[XIC(KC_Steps.6) ,XIC(Spdls_InnerChucksRETRD) ] OTU(KC_FeedStopped) ];]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[[LE(KC_Abs_Pos_10_mm,720) ,[XIC(KC_ManualForward_Fast) ,XIC(KC_ManualForward_Slow) ] LE(KC_Abs_Pos_10_mm,900) ]XIO(Spdls_MiddleChucksRETRD)OTE(Limits_MiddleChucksRetracted_Fail);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[CORE RADIUS MINIMUM LIMIT]]>
+</Comment>
+<Text>
+<![CDATA[ADD(Spindles_InnerChucksRad_mm,25,mm_MinimCoreRadius);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[XIC(Always_0)[MOVE(46,HMI_Lathe_Core_Radius_SetVal1) ,MOVE(65,HMI_Lathe_Core_Radius_SetVal2) ,MOVE(160,HMI_Lathe_Core_Radius_LimVolRad1) ];]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[XIC(HMI_Lathe_DualCoreSize_Toggle)_Toggle(_TwoCoreSizeToggle,HMI_Lathe_DualCoreSize_Enabled,_TwoCoreSizeToggle.OUT_OnPulse);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Comment>
+<![CDATA[CORE RADIUS BASED ON BLOCK VOLUME DIAMETER
+Diam < 320 = core radius 45.5 (diam 91)
+Diam >320 = core radius 65 (diam 130)]]>
+</Comment>
+<Text>
+<![CDATA[XIC(HMI_Lathe_DualCoreSize_Enabled)XIC(FROM_ChargerSwing_AT_Lathe)[MOVE(HMI_Lathe_Core_Radius_SetVal1,_CoreRadiusTemp) ,GT(MsgChargerTOLatheTbl[4],HMI_Lathe_Core_Radius_LimVolRad1) MOVE(HMI_Lathe_Core_Radius_SetVal2,_CoreRadiusTemp) ,MUL(_CoreRadiusTemp,10,HMI_Lathe_Core_Radius) ];]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Text>
+<![CDATA[XIC(FROM_ChargerSwing_AT_Lathe)CPT(VeneerRibbonLengthEstimate,3.14*(MsgChargerTOLatheTbl[5]*MsgChargerTOLatheTbl[5]-(HMI_Lathe_Core_Radius*HMI_Lathe_Core_Radius/100.0))/(MIS_LatheRecipe_IOi3*10.0));]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Text>
+<![CDATA[LT(HMI_Lathe_Core_Radius,mm_MinimCoreRadius)MOVE(mm_MinimCoreRadius,HMI_Lathe_Core_Radius);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Text>
+<![CDATA[MOVE(HMI_Lathe_Core_Radius,KC_CoreRadius_mm);]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Text>
+<![CDATA[SUB(IO_XY_To_Lathe_DATA3,KC_Extra_Retract_Adder,KC_Extra_Retract_Threshold);]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Text>
+<![CDATA[XIC(KC_Control_Enable)XIO(KC_SynchronRun)XIO(KC_ManualRun)XIC(Spdls_InnerChucksRETRD)XIC(Lathe_Automatic_Mode)XIO(KC_Retracting)LT(KC_Abs_Pos_10_mm,IO_XY_To_Lathe_DATA3)LE(KC_Abs_Pos_10_mm,KC_Extra_Retract_Threshold)OTE(KC_ExtraRetract);]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
+<![CDATA[KNIFE CARRIAGE RETURN RADIUS]]>
+</Comment>
+<Text>
+<![CDATA[[SUB(Data_ReturnRad,10,_KC_RetractPos_mm) GT(_KC_RetractPos_mm,4200) MOVE(4190,_KC_RetractPos_mm) ,[GT(_KC_RetractPos_mm,1500) MUL(_KC_RetractPos_mm,KC_Retract_Variables[3],_KC_RetractCloseTOClear) ,GT(_KC_RetractPos_mm,2000) MUL(_KC_RetractPos_mm,KC_Retract_Variables[2],_KC_RetractCloseTOClear) ,GT(_KC_RetractPos_mm,2500) MUL(_KC_RetractPos_mm,KC_Retract_Variables[1],_KC_RetractCloseTOClear) ,GT(_KC_RetractPos_mm,3500) MUL(_KC_RetractPos_mm,KC_Retract_Variables[0],_KC_RetractCloseTOClear) ,LE(_KC_RetractPos_mm,1500) MUL(_KC_RetractPos_mm,KC_Retract_Variables[4],_KC_RetractCloseTOClear) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Text>
+<![CDATA[ADD(Spindles_ClosedChucksRad,200,KC_FastForwardRad_mm);]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Text>
+<![CDATA[XIC(Test_Fast_KC_Retract)[GT(HMI_Lathe_Peel_Thickness1,300) MOVE(3,KC_CoreRadiusAdder_mm) ,LE(HMI_Lathe_Peel_Thickness1,300) MOVE(2,KC_CoreRadiusAdder_mm) ,ADD(KC_CoreRadius_mm,KC_CoreRadiusAdder_mm,KC_CoreRadiusMod_mm) ];]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Comment>
+<![CDATA[CORE RADIUS REACHED]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_Control_Enable)[XIC(CarriageDrive.Status.InCoreLimit) XIC(CarriageDrive.Status.DriveAt0Speed) ,XIC(Test_Fast_KC_Retract) XIC(CarriageDrive.Status.InCoreLimit) LE(KC_Abs_Pos_10_mm,KC_CoreRadiusMod_mm) ,LE(KC_Abs_Pos_10_mm,KC_CoreRadius_mm) ]OTE(KC_CoreRadiusReached);]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Comment>
+<![CDATA[KNIFE CARRIAGE RETRACTED]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_Control_Enable)GE(KC_Abs_Pos_10_mm,_KC_RetractPos_mm)XIO(KC_PeelingBeenOn)OTE(KC_Retracted);]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Comment>
+<![CDATA[KNIFE CARRIAGE RETRACTING]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_Control_Enable)XIC(KC_Steps.6)[TON(_T_KC_Retracting_delay,?,?) XIC(_T_KC_Retracting_delay.DN) ,]OTE(KC_Retracting);]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Comment>
+<![CDATA[KNIFE CARRIAGE IS MOVING BACKWARD]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_Control_Enable)XIC(KC_Retracting)ONS(_ONS_1.1)MOVE(KC_Abs_Pos_10_mm,_KC_AbsPos10mm_Old);]]>
+</Text>
+</Rung>
+<Rung Number="20" Type="N">
+<Text>
+<![CDATA[XIC(KC_Control_Enable)XIC(KC_Retracting)GT(KC_Abs_Pos_10_mm,_KC_AbsPos10mm_Old)MOVE(KC_Abs_Pos_10_mm,_KC_AbsPos10mm_Old)OTE(KC_MovedBackward);]]>
+</Text>
+</Rung>
+<Rung Number="21" Type="N">
+<Comment>
+<![CDATA[KNIFE CARRIAGE IS CLEAR FOR NEXT BLOCK]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_Control_Enable)[XIC(KC_Retracted) ,XIC(_KC_Retracted_temp) XIO(KC_Steps.2) XIO(KC_Steps.4) ,GE(KC_Abs_Pos_10_mm,_KC_RetractPos_mm) ,SUB(_KC_RetractPos_mm,50,_KC_RetractPos_TGT_Window) GE(KC_Abs_Pos_10_mm,_KC_RetractPos_TGT_Window) ,XIC(KC_MovedBackward) GT(KC_ActSpeed_10,1500) GT(KC_Abs_Pos_10_mm,_KC_RetractCloseTOClear) ][OTE(KC_ClearFORBlk) ,OTE(_KC_Retracted_temp) ];]]>
+</Text>
+</Rung>
+<Rung Number="22" Type="N">
+<Comment>
+<![CDATA[PEELING ENABLE FROM ROLLER NOSE BAR]]>
+</Comment>
+<Text>
+<![CDATA[[LE(rpm_ActSpindleSpeed10,200) ,XIO(RollerBarRot_RotStopped_LHS) ,XIO(RollerBarRot_RotStopped_RHS) ]TOF(_T_EnableFromRollerBar,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="23" Type="N">
+<Text>
+<![CDATA[[XIC(_T_EnableFromRollerBar.DN) ,]OTE(KC_PeelingEnableFromRollerBar);]]>
+</Text>
+</Rung>
+<Rung Number="24" Type="N">
+<Comment>
+<![CDATA[PEELING ENABLE]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_Control_Enable)XIO(Error_LatheMasterSeq.1)XIC(KC_PeelingEnableFromRollerBar)XIO(MotorStart_Service)XIC(I_Pilz_1_LS_StairwaySafeDoorLHS_Clsd)XIC(I_Pilz_1_LS_StairwaySafeDoorRHS_Clsd)XIC(I_Pilz_2_LS_TrashGateLock_OFF)XIC(TopRoll_CommandEnable)XIC(BottomRoll_CommandEnable)XIC(PitchAngle_Control_Enable)XIC(Roller_Bar_Control_Enable)XIC(I_M_TopRollRotHydrRun)XIC(I_M_BottomRollRotHydrRun)XIC(Spindles_OperationEnable)OTE(KC_PeelingEnable);]]>
+</Text>
+</Rung>
+<Rung Number="25" Type="N">
+<Comment>
+<![CDATA[CARRIAGE STEPS
+
+STEP #1 - READY FOR NEXT BLOCK
+STEP #2 - ROUND UP
+STEP #3 - ROUNDUP PEEL
+STEP #4 - PEELING
+STEP #5 - AT CORE LIMIT
+STEP #6 - CORE DROP / RETRACT]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_PeelingEnable)XIC(KC_Steps.6)[XIC(KC_KnifeCarrRetracted) ,]XIC(CarriageDrive.Status.AtPosition)MOVE(1,KC_StepNumber);]]>
+</Text>
+</Rung>
+<Rung Number="26" Type="N">
+<Comment>
+<![CDATA[CARRIAGE STEPS
+
+STEP #1 - READY FOR NEXT BLOCK
+STEP #2 - ROUND UP
+STEP #3 - ROUNDUP PEEL
+STEP #4 - PEELING
+STEP #5 - AT CORE LIMIT
+STEP #6 - CORE DROP / RETRACT]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_PeelingEnable)[XIC(Lathe_Step_6) XIO(Auto_Roundup_Has_Been_On) ,XIC(Lathe_Step_7) XIO(Auto_Roundup_Has_Been_On) ,XIC(Lathe_Step_4) XIC(Lathe_Spindle_Drive_Running) XIC(Auto_Roundup_Step_Has_Been_On) XIO(Auto_Roundup_Has_Been_On) EQ(KC_StepNumber,0) XIC(Test_Bit_Pasi) ,XIC(OUT_JS_Roundup) ]XIC(Spindles_Rotation_ON)XIO(CarriageDrive.Status.InCoreLimit)[[[XIC(Tipple_IsDOWN) ,XIC(Lathe_Tipple_To_Lower_Tray) ] XIC(Catch_Up_Tray_Lower_StandBy) XIC(CatchUpConvLower_RunningFW) ,[XIC(Tipple_IsUP) ,XIC(Lathe_Tipple_To_Upper_Tray) ] XIC(Catch_Up_Tray_Upper_StandBy) XIC(CatchUpConvUpper_RunningFW) ] OTE(Trays_Ready_For_Peeling) ,XIC(HMI_Lathe_RUpEarlyStart_Enabled) XIC(Trashgate_IsOpened) ]MOVE(2,KC_StepNumber);]]>
+</Text>
+</Rung>
+<Rung Number="27" Type="N">
+<Comment>
+<![CDATA[CARRIAGE STEPS
+
+STEP #1 - READY FOR NEXT BLOCK
+STEP #2 - ROUND UP
+STEP #3 - ROUNDUP PEEL
+STEP #4 - PEELING
+STEP #5 - AT CORE LIMIT
+STEP #6 - CORE DROP / RETRACT]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_PeelingEnable)XIC(OUT_JS_RoundupPeel)XIC(Spindles_Rotation_ON)XIO(CarriageDrive.Status.InCoreLimit)[[XIC(Tipple_IsDOWN) ,XIC(Lathe_Tipple_To_Lower_Tray) ] XIC(Catch_Up_Tray_Lower_StandBy) ,[XIC(Tipple_IsUP) ,XIC(Lathe_Tipple_To_Upper_Tray) ] XIC(Catch_Up_Tray_Upper_StandBy) ]MOVE(3,KC_StepNumber);]]>
+</Text>
+</Rung>
+<Rung Number="28" Type="N">
+<Comment>
+<![CDATA[CARRIAGE STEPS
+
+STEP #1 - READY FOR NEXT BLOCK
+STEP #2 - ROUND UP
+STEP #3 - ROUNDUP PEEL
+STEP #4 - PEELING
+STEP #5 - AT CORE LIMIT
+STEP #6 - CORE DROP / RETRACT]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_PeelingEnable)[XIC(Lathe_Step_8) XIO(Auto_Peeling_Has_Been_On) XIO(OUT_JS_Roundup) ,XIC(OUT_JS_Peeling) XIO(Lathe_Step_8) ,XIC(OUT_JS_RoundupPeel) ]XIO(CarriageDrive.Status.InCoreLimit)[[XIC(Lathe_Tipple_And_Trays_Ready) XIC(Spindles_Rotation_ON) [XIC(Tipple_IsDOWN) [XIC(Catch_Up_Tray_Lower_StandBy) ,XIC(Test_Bits[0].2) XIC(Catch_Up_Tray_Lower_FrontEndPassed) ONS(ONS_Knife_Carriage0.1) XIC(KCWaitingCatchUpConveyorsForPeeling) ] XIC(CatchUpConvLower_RunningFW) ,XIC(Tipple_IsUP) [XIC(Catch_Up_Tray_Upper_StandBy) ,XIC(Test_Bits[0].2) XIC(Catch_Up_Tray_Upper_FrontEndPassed) ONS(ONS_Knife_Carriage0.2) XIC(KCWaitingCatchUpConveyorsForPeeling) ] XIC(CatchUpConvUpper_RunningFW) ] MOVE(4,KC_StepNumber) ,[[XIO(Tipple_IsDOWN) ,XIO(Catch_Up_Tray_Lower_StandBy) ,XIO(CatchUpConvLower_RunningFW) ] [XIO(Tipple_IsUP) ,XIO(Catch_Up_Tray_Upper_StandBy) ,XIO(CatchUpConvUpper_RunningFW) ] ,XIO(Clipper_ControlEnable) ,XIO(Lathe_Tipple_And_Trays_Ready) ] [OTE(KCWaitingCatchUpConveyorsForPeeling) ,ONS(ONS.0) ADD(PRUCounters[0],1,PRUCounters[0]) ] ] ,XIO(Spindles_Rotation_ON) OTE(KCWaitingSpindleRotationForPeeling) ];]]>
+</Text>
+</Rung>
+<Rung Number="29" Type="N">
+<Comment>
+<![CDATA[CARRIAGE STEPS
+
+STEP #1 - READY FOR NEXT BLOCK
+STEP #2 - ROUND UP
+STEP #3 - ROUNDUP PEEL
+STEP #4 - PEELING
+STEP #5 - AT CORE LIMIT
+STEP #6 - CORE DROP / RETRACT]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Always_0)XIC(KC_PeelingEnable)[XIC(KC_Steps.2) XIC(Lathe_Step_7) ,XIC(KC_Steps.4) XIC(Lathe_Step_7) ,[XIC(KC_Steps.5) XIC(Lathe_Step_7) ,XIC(CarriageDrive.Status.InCoreLimit) ,LE(KC_Abs_Pos_10_mm,HMI_Lathe_Core_Radius) ] ]MOVE(5,KC_StepNumber);]]>
+</Text>
+</Rung>
+<Rung Number="30" Type="N">
+<Comment>
+<![CDATA[CARRIAGE STEPS
+
+STEP #1 - READY FOR NEXT BLOCK
+STEP #2 - ROUND UP
+STEP #3 - ROUNDUP PEEL
+STEP #4 - PEELING
+STEP #5 - AT CORE LIMIT
+STEP #6 - CORE DROP / RETRACT]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_PeelingEnable)[XIC(KC_CoreRadiusReached) ,XIC(KC_PeelingBeenOn) XIC(OUT_JS_StopPeelOpnChucks) XIO(Spdls_InnerChucksRETRD) XIC(Spdls_MiddleChucksRETRD) XIC(Spdls_MiddleChucksRETRD) ,XIC(Spindles_Spinout) CTU(Diagnostic[0],?,?) ,[XIC(TopRoll_Spinout) ,XIC(BottomRoll_Spinout) ] LT(KC_Abs_Pos_10_mm,800) CTU(Diagnostic[1],?,?) ]MOVE(6,KC_StepNumber);]]>
+</Text>
+</Rung>
+<Rung Number="31" Type="N">
+<Comment>
+<![CDATA[CLEAR STEP NUMBER IN CASE OF DISTURBANCE]]>
+</Comment>
+<Text>
+<![CDATA[[XIO(KC_Control_Enable) ,XIC(Limits_OuterChucksRetracted_Fail) ,XIC(Limits_MiddleChucksRetracted_Fail) ,XIC(OUT_JS_StopKnifeCarrFeed) ,XIC(OUT_JS_StopPeelOpnChucks) XIO(Spdls_MiddleChucksRETRD) ,XIC(OUT_JS_KnifeCarrBackward) ,XIC(KC_DrivingError) ,XIC(AnyError_KnifeCarriageControl) ,XIO(KC_PeelingEnable) [XIO(KC_Steps.6) ,XIC(KC_KnifeCarrRetracted) ] ,[XIC(TopRoll_Spinout) ,XIC(BottomRoll_Spinout) ] GE(KC_Abs_Pos_10_mm,800) ]CLR(KC_StepNumber);]]>
+</Text>
+</Rung>
+<Rung Number="32" Type="N">
+<Comment>
+<![CDATA[CARRIAGE CURRENT STEP #1]]>
+</Comment>
+<Text>
+<![CDATA[EQ(KC_StepNumber,1)OTE(KC_Steps.1);]]>
+</Text>
+</Rung>
+<Rung Number="33" Type="N">
+<Comment>
+<![CDATA[CARRIAGE CURRENT STEP #2]]>
+</Comment>
+<Text>
+<![CDATA[EQ(KC_StepNumber,2)OTE(KC_Steps.2);]]>
+</Text>
+</Rung>
+<Rung Number="34" Type="N">
+<Comment>
+<![CDATA[CARRIAGE CURRENT STEP #2]]>
+</Comment>
+<Text>
+<![CDATA[EQ(KC_StepNumber,3)OTE(KC_Steps.3);]]>
+</Text>
+</Rung>
+<Rung Number="35" Type="N">
+<Comment>
+<![CDATA[CARRIAGE CURRENT STEP #4]]>
+</Comment>
+<Text>
+<![CDATA[EQ(KC_StepNumber,4)OTE(KC_Steps.4);]]>
+</Text>
+</Rung>
+<Rung Number="36" Type="N">
+<Comment>
+<![CDATA[CARRIAGE CURRENT STEP #5]]>
+</Comment>
+<Text>
+<![CDATA[EQ(KC_StepNumber,5)OTE(KC_Steps.5);]]>
+</Text>
+</Rung>
+<Rung Number="37" Type="N">
+<Comment>
+<![CDATA[CARRIAGE CURRENT STEP #6]]>
+</Comment>
+<Text>
+<![CDATA[EQ(KC_StepNumber,6)OTE(KC_Steps.6);]]>
+</Text>
+</Rung>
+<Rung Number="38" Type="N">
+<Comment>
+<![CDATA[PEELING CYCLE HAS BEEN STARTED]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(KC_Steps.2) ,XIC(KC_Steps.4) ,XIC(Lathe_Spindle_Drive_Running) ]OTL(KC_PeelingBeenOn);]]>
+</Text>
+</Rung>
+<Rung Number="39" Type="N">
+<Text>
+<![CDATA[[XIC(KC_Steps.6) ,XIC(Spdls_InnerChucksRETRD) ]OTU(KC_PeelingBeenOn);]]>
+</Text>
+</Rung>
+<Rung Number="40" Type="N">
+<Text>
+<![CDATA[GT(HMI_Lathe_HeavyPeel_Offset,0)GT(HMI_Lathe_HeavyPeel_Wrap,0)OTE(_KC_HeavyPeel_ENA);]]>
+</Text>
+</Rung>
+<Rung Number="41" Type="N">
+<Text>
+<![CDATA[XIC(_KC_HeavyPeel_ENA)[XIC(KC_Steps.4) ,XIC(KC_Steps.3) ][OTE(_KC_HeavyPeel_CMD) ,ONS(_ONS_KC.28) [MOVE(HMI_Lathe_HeavyPeel_Offset,_KC_HeavyPeel_Offset) ,DIV(HMI_Lathe_HeavyPeel_Wrap,10,_KC_HeavyPeel_FullWraps) ,CPT(_KC_HeavyPeel_WrapOffset,HMI_Lathe_HeavyPeel_Offset*10/HMI_Lathe_HeavyPeel_Wrap) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="42" Type="N">
+<Text>
+<![CDATA[XIC(_KC_HeavyPeel_CMD)XIC(RollerBar_IsClosed)ONS(_ONS_KC.29)[MOVE(KC_Abs_Pos_10_mm,_KC_HeavyPeel_StartPOS) ,CPT(_KC_HeavyPeel_EndPOS,KC_Abs_Pos_10_mm-(HMI_Lathe_Peel_Thickness1*HMI_Lathe_HeavyPeel_Wrap/100)) ,CPT(_KC_HeavyPeel_TGT,KC_Abs_Pos_10_mm-(HMI_Lathe_Peel_Thickness1/10)) ,OTL(_KC_HeavyPeelCalcs_DONE) ];]]>
+</Text>
+</Rung>
+<Rung Number="43" Type="N">
+<Text>
+<![CDATA[XIC(_KC_HeavyPeel_CMD)XIC(RollerBar_IsClosed)GT(_KC_HeavyPeel_FullWraps,0)LT(KC_Abs_Pos_10_mm,_KC_HeavyPeel_TGT)[SUB(_KC_HeavyPeel_Offset,_KC_HeavyPeel_WrapOffset,_KC_HeavyPeel_Offset) ,LT(_KC_HeavyPeel_Offset,0) MOVE(0,_KC_HeavyPeel_Offset) ,SUB(_KC_HeavyPeel_FullWraps,1,_KC_HeavyPeel_FullWraps) ,CPT(_KC_HeavyPeel_TGT,_KC_HeavyPeel_TGT-(HMI_Lathe_Peel_Thickness1/10)) ];]]>
+</Text>
+</Rung>
+<Rung Number="44" Type="N">
+<Text>
+<![CDATA[[XIO(_KC_HeavyPeel_CMD) ,XIC(_KC_HeavyPeelCalcs_DONE) LT(KC_Abs_Pos_10_mm,_KC_HeavyPeel_EndPOS) ][MOVE(0,_KC_HeavyPeel_Offset) ,OTU(_KC_HeavyPeelCalcs_DONE) ];]]>
+</Text>
+</Rung>
+<Rung Number="45" Type="N">
+<Comment>
+<![CDATA[KNIFE CARRIAGE MANUALLY FORWARD SLOWLY]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_Control_Enable)[XIO(MotorStart_Service) XIC(I_Pilz_1_LS_StairwaySafeDoorLHS_Clsd) XIC(I_Pilz_1_LS_StairwaySafeDoorRHS_Clsd) XIC(OUT_JS_KnifeCarrForward) XIC(Lathe_Spindle_Drive_Running) ,XIC(MotorStart_Service) XIC(I_PB_ButtonsEna_204C) XIC(I_PB_KnifeCarrFW_204C) ]OTE(KC_ManualForward_Slow);]]>
+</Text>
+</Rung>
+<Rung Number="46" Type="N">
+<Comment>
+<![CDATA[KNIFE CARRIAGE MANUALLY FORWARD FAST]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_Control_Enable)XIO(MotorStart_Service)XIC(I_Pilz_1_LS_StairwaySafeDoorLHS_Clsd)XIC(I_Pilz_1_LS_StairwaySafeDoorRHS_Clsd)XIC(OUT_JS_KnifeCarrForward)XIO(Lathe_Spindle_Drive_Running)OTE(KC_ManualForward_Fast);]]>
+</Text>
+</Rung>
+<Rung Number="47" Type="N">
+<Comment>
+<![CDATA[KNIFE CARRIAGE MANUALLY BACKWARD SLOWLY]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_Control_Enable)XIC(MotorStart_Service)XIC(I_PB_ButtonsEna_204C)XIC(I_PB_KnifeCarrBW_204C)OTE(KC_ManualBackward_Slow);]]>
+</Text>
+</Rung>
+<Rung Number="48" Type="N">
+<Comment>
+<![CDATA[KNIFE CARRIAGE MANUALLY BACKWARD FAST]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_Control_Enable)XIO(MotorStart_Service)XIC(I_Pilz_1_LS_StairwaySafeDoorLHS_Clsd)XIC(I_Pilz_1_LS_StairwaySafeDoorRHS_Clsd)XIC(OUT_JS_KnifeCarrBackward)OTE(KC_ManualBackward_Fast);]]>
+</Text>
+</Rung>
+<Rung Number="49" Type="N">
+<Text>
+<![CDATA[[XIC(KC_ManualForward_Slow) ,XIC(KC_ManualForward_Fast) ]MOVE(1000,_KC_KnifeCarrTarget);]]>
+</Text>
+</Rung>
+<Rung Number="50" Type="N">
+<Text>
+<![CDATA[AFI()[XIC(KC_ManualBackward_Slow) ,XIC(KC_ManualBackward_Fast) ]MOVE(6000,_KC_KnifeCarrTarget);]]>
+</Text>
+</Rung>
+<Rung Number="51" Type="N">
+<Comment>
+<![CDATA[CHECK DELTA / DRIVE SENSORS DIFFERENCE]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Error_KnifeCarriageControl.1)[XIC(KC_ManualForward_Slow) ,XIC(KC_ManualForward_Fast) ,XIC(KC_ManualBackward_Slow) ,XIC(KC_ManualBackward_Fast) ,XIC(KC_Steps.2) ,XIC(KC_Steps.4) ]SUB(KC_Abs_Pos_10_mm,CarriageDrive.CurrentPosition,_KC_PosSensorDifference)[GT(_KC_PosSensorDifference,25) ,XIO(_KC_DiffSensorPosit) LT(_KC_PosSensorDifference,-25) ]OTL(_KC_DiffSensorPosit);]]>
+</Text>
+</Rung>
+<Rung Number="52" Type="N">
+<Text>
+<![CDATA[XIO(Error_KnifeCarriageControl.1)XIC(_KC_DiffCurrCycle_1)XIC(_KC_DiffCurrCycle_2)OTE(_KC_DiffCurrCycle_3);]]>
+</Text>
+</Rung>
+<Rung Number="53" Type="N">
+<Text>
+<![CDATA[XIO(Error_KnifeCarriageControl.1)XIC(_KC_DiffSensorPosit)XIC(_KC_DiffCurrCycle_1)OTE(_KC_DiffCurrCycle_2);]]>
+</Text>
+</Rung>
+<Rung Number="54" Type="N">
+<Text>
+<![CDATA[XIO(Error_KnifeCarriageControl.1)XIC(_KC_DiffSensorPosit)OTE(_KC_DiffCurrCycle_1);]]>
+</Text>
+</Rung>
+<Rung Number="55" Type="N">
+<Text>
+<![CDATA[XIO(Error_KnifeCarriageControl.1)OTU(_KC_DiffSensorPosit);]]>
+</Text>
+</Rung>
+<Rung Number="56" Type="N">
+<Comment>
+<![CDATA[POSITION CHECK PROXY SWITCH
+
+Min and Max should be set 20 counts (2mm) above and below the average detection range. eg if average is arounf 1000 then Min = 980, Max = 1020
+See Rungs below to find average.
+
+Calibrated 06/11/2025. If this alarm is on, time to replace the actuator.]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(I_PR_KnifeCarrPos_RHS1) ONS(_ONS_KC.2) [LT(KC_Abs_Pos_10_mm,912) [CTU(_PositionCheckFailure_Counter[0],?,?) ,MOVE(KC_Abs_Pos_10_mm,_PositionCheckFailure_Values[0]) ] ,GT(KC_Abs_Pos_10_mm,952) [CTU(_PositionCheckFailure_Counter[1],?,?) ,MOVE(KC_Abs_Pos_10_mm,_PositionCheckFailure_Values[1]) ] ] ,[XIC(I_PR_KnifeCarrPos_LHS1) ONS(_ONS_KC.3) [LT(KC_Abs_Pos_10_mm,940) [CTU(_PositionCheckFailure_Counter[2],?,?) ,MOVE(KC_Abs_Pos_10_mm,_PositionCheckFailure_Values[2]) ] ,GT(KC_Abs_Pos_10_mm,980) [CTU(_PositionCheckFailure_Counter[3],?,?) ,MOVE(KC_Abs_Pos_10_mm,_PositionCheckFailure_Values[3]) ] ] ,LT(KC_Abs_Pos_10_mm,910) XIO(I_PR_KnifeCarrPos_RHS1) [CTU(_PositionCheckFailure_Counter[4],?,?) ,MOVE(KC_Abs_Pos_10_mm,_PositionCheckFailure_Values[4]) ] ,LT(KC_Abs_Pos_10_mm,910) XIO(I_PR_KnifeCarrPos_LHS1) [CTU(_PositionCheckFailure_Counter[5],?,?) ,ONS(_ONS_1.3) MOVE(KC_Abs_Pos_10_mm,_PositionCheckFailure_Values[5]) ] ] ]OTL(_PositionCheckFailure);]]>
+</Text>
+</Rung>
+<Rung Number="57" Type="N">
+<Text>
+<![CDATA[[XIO(I_PR_KnifeCarrPos_RHS1) ONS(_ONS_1.4) MOVE(KC_Abs_Pos_10_mm,_PositionCheck_ValuesRHS) ,XIO(I_PR_KnifeCarrPos_LHS1) ONS(_ONS_1.5) MOVE(KC_Abs_Pos_10_mm,_PositionCheck_ValuesLHS) ];]]>
+</Text>
+</Rung>
+<Rung Number="58" Type="N">
+<Comment>
+<![CDATA[Average check positions for RHS Knife Carriage check prox.
+For use setting Min/Max in Rungs above]]>
+</Comment>
+<Text>
+<![CDATA[XIC(I_PR_KnifeCarrPos_RHS1)ONS(_ONS_KC.4)[MOVE(KC_Abs_Pos_10_mm,_PositionCheckFailure_Values[6]) ,LT(KC_Abs_Pos_10_mm,_Position_CheckRHS_Min) MOVE(KC_Abs_Pos_10_mm,_Position_CheckRHS_Min) ,GT(KC_Abs_Pos_10_mm,_Position_CheckRHS_Max) MOVE(KC_Abs_Pos_10_mm,_Position_CheckRHS_Max) ];]]>
+</Text>
+</Rung>
+<Rung Number="59" Type="N">
+<Comment>
+<![CDATA[Average check positions for LHS Knife Carriage check prox.
+For use setting Min/Max in Rungs above]]>
+</Comment>
+<Text>
+<![CDATA[XIC(I_PR_KnifeCarrPos_LHS1)ONS(_ONS_KC.5)[MOVE(KC_Abs_Pos_10_mm,_PositionCheckFailure_Values[7]) ,LT(KC_Abs_Pos_10_mm,_Position_CheckLHS_Min) MOVE(KC_Abs_Pos_10_mm,_Position_CheckLHS_Min) ,GT(KC_Abs_Pos_10_mm,_Position_CheckLHS_Max) MOVE(KC_Abs_Pos_10_mm,_Position_CheckLHS_Max) ];]]>
+</Text>
+</Rung>
+<Rung Number="60" Type="N">
+<Text>
+<![CDATA[XIC(ErrorReset_Lathe)OTU(_PositionCheckFailure);]]>
+</Text>
+</Rung>
+<Rung Number="61" Type="N">
+<Comment>
+<![CDATA[DRIVING IS NOT ALLOWED]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(KC_ManualForward_Slow) ,XIC(KC_ManualForward_Fast) ,XIC(KC_ManualBackward_Slow) ,XIC(KC_ManualBackward_Fast) ,XIC(KC_Steps.2) ,XIC(KC_Steps.4) ][XIC(AnyError_KnifeCarriageControl) ,XIC(CarriageDrive.Status.AtSoftLimits) ,XIC(AnyError_SpindlesControl) XIO(KC_ManualBackward_Slow) XIO(KC_ManualBackward_Fast) ]OTL(KC_DrivingError);]]>
+</Text>
+</Rung>
+<Rung Number="62" Type="N">
+<Text>
+<![CDATA[XIC(ErrorReset_Lathe)OTU(KC_DrivingError);]]>
+</Text>
+</Rung>
+<Rung Number="63" Type="N">
+<Comment>
+<![CDATA[MANUAL RUNNING STOPPED]]>
+</Comment>
+<Text>
+<![CDATA[XIO(KC_ManualBackward_Slow)XIO(KC_ManualBackward_Fast)XIO(KC_ManualForward_Slow)XIO(KC_ManualForward_Fast)[ONS(_ONS_KC.0) OTE(_KC_ManualRunningStopped) ,[XIC(CarriageDrive.Status.DriveAt0Speed) ,XIC(_T_ManualRunningStopped.DN) ] TON(_T_ManualRunningStopped,?,?) ];]]>
+</Text>
+</Rung>
+<Rung Number="64" Type="N">
+<Text>
+<![CDATA[XIC(_T_ManualRunningStopped.DN)ONS(_ONS_KC.1)OTE(_KC_DriveStopped);]]>
+</Text>
+</Rung>
+<Rung Number="65" Type="N">
+<Comment>
+<![CDATA[POSITION RUNNING]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(KC_ManualBackward_Slow) ,XIC(KC_ManualBackward_Fast) ,XIC(KC_ManualForward_Slow) ,XIC(KC_ManualForward_Fast) ,XIC(KC_Steps.6) ,XIC(test_Second_Load_Pos) XIC(KC_Steps.1) XIC(KC_ExtraRetract) ]TON(_T_PositionRunning_ON,?,?)XIC(_T_PositionRunning_ON.DN)OTE(_KC_PositionRun);]]>
+</Text>
+</Rung>
+<Rung Number="66" Type="N">
+<Comment>
+<![CDATA[SYNCHRON RUNNING]]>
+</Comment>
+<Text>
+<![CDATA[XIO(_KC_PositionRun)TON(_T_SynchronRunning_ON,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="67" Type="N">
+<Text>
+<![CDATA[[XIC(KC_Steps.2) ,XIC(KC_Steps.4) ]XIC(_T_SynchronRunning_ON.DN)OTE(_KC_SynchronRunning);]]>
+</Text>
+</Rung>
+<Rung Number="68" Type="N">
+<Text>
+<![CDATA[XIC(_KC_SynchronRunning)OSF(_ONS_1.2,_KC_SynchronRunStopped);]]>
+</Text>
+</Rung>
+<Rung Number="69" Type="N">
+<Text>
+<![CDATA[XIC(KC_Steps.6)LE(_KC_RetractPos_mm,0)MUL(HMI_Lathe_Man_Return_Rad,10,_KC_KnifeCarrTarget);]]>
+</Text>
+</Rung>
+<Rung Number="70" Type="N">
+<Text>
+<![CDATA[GE(KC_Abs_Pos_10_mm,_KC_RetractPos_mm)OTE(KC_KnifeCarrRetracted);]]>
+</Text>
+</Rung>
+<Rung Number="71" Type="N">
+<Text>
+<![CDATA[[XIC(Limits_MiddleChucksRetracted_Fail) ,XIC(Limits_OuterChucksRetracted_Fail) ]OTE(KC_StopDrive);]]>
+</Text>
+</Rung>
+<Rung Number="72" Type="N">
+<Text>
+<![CDATA[XIC(_KC_PositionRun)XIO(KC_StopDrive)OTE(KC_ManualRun);]]>
+</Text>
+</Rung>
+<Rung Number="73" Type="N">
+<Text>
+<![CDATA[XIC(_KC_SynchronRunning)XIO(KC_StopDrive)OTE(KC_SynchronRun);]]>
+</Text>
+</Rung>
+<Rung Number="74" Type="N">
+<Comment>
+<![CDATA[TARGET FOR DRIVE]]>
+</Comment>
+<Text>
+<![CDATA[XIO(KC_Retracting)[XIC(_KC_SynchronRunStopped) ,XIC(_KC_DriveStopped) ]MOVE(KC_Abs_Pos_10_mm,_KC_KnifeCarrTarget);]]>
+</Text>
+</Rung>
+<Rung Number="75" Type="N">
+<Comment>
+<![CDATA[MANUALLY FORWARD TARGET]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(KC_ManualForward_Slow) ,XIC(KC_ManualForward_Fast) ]MOVE(KC_FastForwardRad_mm,_KC_KnifeCarrTarget);]]>
+</Text>
+</Rung>
+<Rung Number="76" Type="N">
+<Comment>
+<![CDATA[MANUALLY BACKWARD TARGET]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(KC_ManualBackward_Slow) ,XIC(KC_ManualBackward_Fast) ][XIO(MotorStart_Service) MOVE(4200,_KC_KnifeCarrTarget) ,[XIC(MotorStart_Service) ,XIO(KC_ManualBackward_Fast) XIC(_KC_DriveGreasingPos) ] MOVE(6120,_KC_KnifeCarrTarget) ];]]>
+</Text>
+</Rung>
+<Rung Number="77" Type="N">
+<Comment>
+<![CDATA[RETRACT TARGET]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(KC_Retracting) ONS(ONS_Knife_Carriage0.0) ,XIC(test_Second_Load_Pos) XIC(KC_Steps.1) XIC(KC_ExtraRetract) ONS(ONS_Knife_Carriage0.3) ][MOVE(_KC_RetractPos_mm,_KC_KnifeCarrTarget) ,GT(_KC_RetractPos_mm,4200) MOVE(4200,_KC_KnifeCarrTarget) ,LT(_KC_RetractPos_mm,KC_Abs_Pos_10_mm) MOVE(KC_Abs_Pos_10_mm,_KC_KnifeCarrTarget) ];]]>
+</Text>
+</Rung>
+<Rung Number="78" Type="N">
+<Comment>
+<![CDATA[MIN / MAX TARGET
+
+####RujaPa 24.4.2013 Added KC_Control_Enable to first branch to prevent home pos init failure]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(KC_Control_Enable) XIO(KC_ManualForward_Slow) XIO(KC_ManualForward_Fast) LT(_KC_KnifeCarrTarget,KC_CoreRadius_mm) MOVE(KC_CoreRadius_mm,_KC_KnifeCarrTarget) ,[XIC(KC_ManualForward_Slow) ,XIC(KC_ManualForward_Fast) ] LT(KC_Abs_Pos_10_mm,_KC_KnifeCarrTarget) MOVE(KC_Abs_Pos_10_mm,_KC_KnifeCarrTarget) ,XIC(KC_Control_Enable) GT(_KC_KnifeCarrTarget,6150) MOVE(6150,_KC_KnifeCarrTarget) ,[XIC(KC_ManualBackward_Slow) ,XIC(KC_ManualBackward_Fast) ] GT(KC_Abs_Pos_10_mm,_KC_KnifeCarrTarget) MOVE(KC_Abs_Pos_10_mm,_KC_KnifeCarrTarget) ];]]>
+</Text>
+</Rung>
+<Rung Number="79" Type="N">
+<Text>
+<![CDATA[GT(_KC_KnifeCarrTarget,6150)MOVE(6150,_KC_KnifeCarrTarget);]]>
+</Text>
+</Rung>
+<Rung Number="80" Type="N">
+<Text>
+<![CDATA[LT(_KC_KnifeCarrTarget,mm_MinimCoreRadius)MOVE(mm_MinimCoreRadius,_KC_KnifeCarrTarget);]]>
+</Text>
+</Rung>
+<Rung Number="81" Type="N">
+<Text>
+<![CDATA[[XIC(KC_Steps.2) ONS(ONS.8) [GT(Data_RoundupRadFromXY,1250) OTL(Medium_Or_Large_Block_In_Lathe) ,LIMIT(1150,Data_RoundupRadFromXY,1250) OTL(Small_Block_In_Lathe) ,LT(Data_RoundupRadFromXY,1150) OTL(Very_Small_Block_In_Lathe) ] ,XIC(KC_Steps.6) OTU(Medium_Or_Large_Block_In_Lathe) OTU(Small_Block_In_Lathe) OTU(Very_Small_Block_In_Lathe) ];]]>
+</Text>
+</Rung>
+<Rung Number="82" Type="N">
+<Comment>
+<![CDATA[Ribbon break pause time setpoint
+From supervisor's HMI]]>
+</Comment>
+<Text>
+<![CDATA[MOVE(SupHMI_RibbonBreakPauseTime,_TrashGateCloseDelay.PRE);]]>
+</Text>
+</Rung>
+<Rung Number="83" Type="N">
+<Comment>
+<![CDATA[FEEDING THICKNESS]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(KC_Steps.2) [XIC(Medium_Or_Large_Block_In_Lathe) MUL(800,10,mm_CurrFeedThick) ,XIC(Small_Block_In_Lathe) MUL(HMI_Lathe_Peel_Thickness1,20,mm_CurrFeedThick) ,XIC(Very_Small_Block_In_Lathe) MUL(HMI_Lathe_Peel_Thickness1,15,mm_CurrFeedThick) ] ,XIC(KC_Steps.2) XIC(Auto_High_Speed_Roundup) XIO(Spindles_6ftBlock) [AFI() XIC(trash_gate_disable) [GT(Data_RoundupRadFromXY,1400) MOVE(6000,mm_CurrFeedThick) ,LIMIT(1200,Data_RoundupRadFromXY,1400) MOVE(4000,mm_CurrFeedThick) ,LE(Data_RoundupRadFromXY,1200) MUL(HMI_Lathe_Peel_Thickness1,10,mm_CurrFeedThick) ] ,XIO(trash_gate_disable) MOVE(6000,mm_CurrFeedThick) ] ,XIC(KC_Steps.2) XIC(Limits_VeryHighSpeedRoundup) GT(HMI_Lathe_Peel_Thickness1,350) XIO(Spindles_6ftBlock) MOVE(6000,mm_CurrFeedThick) ,XIC(KC_Steps.2) XIC(Limits_FastForwardRad) XIC(OUT_JS_KnifeCarrForward) MOVE(30000,mm_CurrFeedThick) ,[XIC(KC_Steps.4) ,XIC(KC_Steps.3) ,XIC(KC_Steps.2) XIC(HMI_Lathe_RUpEarlyStart_Enabled) XIC(KCWaitingCatchUpConveyorsForPeeling) ] [[XIC(KC_Steps.4) ,XIO(trash_gate_disable) ] [ADD(HMI_Lathe_Peel_Thickness1,_KC_HeavyPeel_Offset,_KC_HeavyPeel_Thickness) ,MUL(_KC_HeavyPeel_Thickness,10,mm_CurrFeedThick) ] ,XIC(trash_gate_disable) [[XIC(Trashgate_IsOpened) ,XIC(HMI_Lathe_RUpEarlyStart_Enabled) XIC(KCWaitingCatchUpConveyorsForPeeling) ] XIO(KC_FeedStopped) [MOVE(0,mm_CurrFeedThick) ,TON(_TrashGateCloseDelay,?,?) ] ,[XIC(_TrashGateCloseDelay.DN) ,XIC(KCStopped_CloseTrashGate) ,XIC(Trashgate_Has_Been_Closed) ] OTE(KCStopped_CloseTrashGate) ,XIC(_TrashGateCloseDelay.TT) OTE(RibbonBreakTrashgateBlow) ] ] ];]]>
+</Text>
+</Rung>
+<Rung Number="84" Type="N">
+<Text>
+<![CDATA[XIC(KCStopped_CloseTrashGate)ONS(_ONS_KC.26)OTL(Trashgate_Has_Been_Closed);]]>
+</Text>
+</Rung>
+<Rung Number="85" Type="N">
+<Comment>
+<![CDATA[DRIVE KNIFE CARRIAGE TO GREASING POSITION]]>
+</Comment>
+<Text>
+<![CDATA[XIC(KC_Steps.6)XIO(_KC_RetractTemp)[ADD(1,_KC_RetractCounter,_KC_RetractCounter) ,OTL(_KC_RetractTemp) ];]]>
+</Text>
+</Rung>
+<Rung Number="86" Type="N">
+<Text>
+<![CDATA[[GE(KC_Abs_Pos_10_mm,6100) ,XIC(ErrorReset_Lathe) ]XIC(_KC_DriveGreasingPos)MOVE(0,_KC_RetractCounter);]]>
+</Text>
+</Rung>
+<Rung Number="87" Type="N">
+<Text>
+<![CDATA[GE(_KC_RetractCounter,30000)OTE(_KC_DriveGreasingPos);]]>
+</Text>
+</Rung>
+<Rung Number="88" Type="N">
+<Text>
+<![CDATA[XIC(KC_Steps.4)OTU(_KC_RetractTemp);]]>
+</Text>
+</Rung>
+<Rung Number="89" Type="N">
+<Comment>
+<![CDATA[OUTPUTS]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(KC_Steps.2) ,XIC(KC_Steps.3) ,XIC(KC_Steps.4) ]OTE(Q_PL_PeelingOn);]]>
+</Text>
+</Rung>
+<Rung Number="90" Type="N">
+<Text>
+<![CDATA[AFI()[XIC(KC_Steps.6) ,XIC(_T_SpurKnifeClean.TT) ][TON(_T_SpurKnifeClean,?,?) ,XIC(_T_SpurKnifeClean.TT) OTE(Q_V_SpurKnifeCleaning) ];]]>
+</Text>
+</Rung>
+<Rung Number="91" Type="N">
+<Comment>
+<![CDATA[ERRORS]]>
+</Comment>
+<Text>
+<![CDATA[XIC(_KC_DiffCurrCycle_3)OTL(Error_KnifeCarriageControl.1);]]>
+</Text>
+</Rung>
+<Rung Number="92" Type="N">
+<Text>
+<![CDATA[XIC(_PositionCheckFailure)[OTL(Error_KnifeCarriageControl.7) ,CTU(Error_KnifeCarriageControl7_Counter,?,?) ];]]>
+</Text>
+</Rung>
+<Rung Number="93" Type="N">
+<Text>
+<![CDATA[XIO(KC_DataRead_OK)OTL(Error_KnifeCarriageControl.8);]]>
+</Text>
+</Rung>
+<Rung Number="94" Type="N">
+<Text>
+<![CDATA[XIC(_KC_DriveGreasingPos)OTL(Error_KnifeCarriageControl.11);]]>
+</Text>
+</Rung>
+<Rung Number="95" Type="N">
+<Text>
+<![CDATA[JSR(L12_KnifeCarriageMot,0);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Use="Reference" Name="L12_KnifeCarriageMot">
+</Routine>
+</Routines>
+</Program>
+</Programs>
+</Controller>
+</RSLogix5000Content>
